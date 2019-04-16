@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-space-info',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpaceInfoPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private navController: NavController) { }
 
   ngOnInit() {
+  }
+
+  reserveSpot() {
+    this.navController.navigateBack('/parking-spaces/tabs/find');
   }
 
 }
