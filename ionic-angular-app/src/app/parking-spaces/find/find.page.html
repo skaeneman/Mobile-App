@@ -18,6 +18,11 @@
           <ion-card-content>
             <p>{{ spaces[0].description }}</p>
           </ion-card-content>
+          <div text-right>
+            <ion-button fill="clear" color="primary" [routerLink]="['/', 'parking-spaces', 'tabs', 'find', spaces[0].id]">
+              Details
+            </ion-button>
+          </div>          
         </ion-card>
       </ion-col>
     </ion-row>
