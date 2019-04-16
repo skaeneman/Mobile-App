@@ -5,5 +5,37 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <!-- featured parking spot -->
+    <ion-row>
+      <ion-col size='12' size-sm='10' offset-sm='1'>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ spaces[0].title }}</ion-card-title>
+            <ion-card-subtitle>{{ spaces[0].price | currency }} per day</ion-card-subtitle>
+          </ion-card-header>
+          <ion-img [src]="spaces[0].url"></ion-img>
+          <ion-card-content>
+            <p>{{ spaces[0].description }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- additional parking spots-->
+    <ion-row>
+      <ion-col size='12' size-sm='10' offset-sm='1'>
+        <ion-list>
+          <ion-item *ngFor="let space of spaces.slice(1)">
+            <ion-thumbnail slot="start">
+              <ion-img [src]="space.url"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>{{ space.title }}</h2>
+              <p>{{ space.description }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

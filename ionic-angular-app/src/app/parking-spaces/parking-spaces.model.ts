@@ -3,6 +3,6 @@ export class ParkingSpaces {
         public id: string,
         public title: string,
         public description: string,
-        public imageUrl: string,
+        public url: string,
         public price: number) {}
 }
