@@ -15,7 +15,7 @@ const routes: Routes = [
               },
               {
                   path: ':parkingSpaceId',
-                  loadChildren: './find/space-info/space-info.module/#SpaceInfoPageModule'
+                  loadChildren: './find/space-info/space-info.module#SpaceInfoPageModule'
               }
           ]
         },
