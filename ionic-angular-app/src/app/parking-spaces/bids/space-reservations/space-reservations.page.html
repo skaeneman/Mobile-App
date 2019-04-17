@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>space-reservations</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/parking-spaces/tabs/bids"></ion-back-button>
+    </ion-buttons>    
+    <ion-title>{{ parkingSpace.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <ion-button margin color="primary" [routerLink]="['/', 'parking-spaces', 'tabs', 'bids', 'edit', 'parkingSpace.id']">Edit</ion-button>
 </ion-content>

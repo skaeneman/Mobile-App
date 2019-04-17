@@ -41,5 +41,11 @@ export class ParkingSpacesService {
     return this.pSpaces;
   }
 
+  // find a parking spot by id
+  findParkingSpace(pId: string) {
+    return this.pSpaces.find(
+      space => space.id === pId);
+  }
+
   constructor() { }
 }

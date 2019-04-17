@@ -38,9 +38,9 @@ const routes: Routes = [
                  },
                  {
                      // space reservations
-                     path: 'parkingSpaceId',
+                     path: ':parkingSpaceId',
                      loadChildren: './bids/space-reservations/space-reservations.module#SpaceReservationsPageModule'
-                 }
+                }
             ]
         },
         {
