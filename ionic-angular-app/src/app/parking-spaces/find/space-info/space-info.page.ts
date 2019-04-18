@@ -31,8 +31,10 @@ export class SpaceInfoPage implements OnInit {
     });
   }
 
+  // save parking spot status to LocalStorage
   reserveSpot() {
     this.navController.navigateBack('/parking-spaces/tabs/find');
+    localStorage.setItem('spot_reserved', JSON.stringify(true));
   }
 
 }

@@ -6,3 +6,4 @@ export class ParkingSpaces {
         public url: string,
         public price: number) {}
 }
+

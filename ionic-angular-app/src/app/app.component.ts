@@ -24,8 +24,10 @@ export class AppComponent {
     });
   }
 
+  // log a user out, save to LocalStorage
   signOut() {
-    
+    const isAuthenticated = false;
+    localStorage.setItem('authenticated', JSON.stringify(isAuthenticated));
   }
 
 }
