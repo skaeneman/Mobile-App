@@ -33,8 +33,17 @@ export class SpaceInfoPage implements OnInit {
 
   // save parking spot status to LocalStorage
   reserveSpot() {
+    // setup JSON string for parking spot details
+    const ps = {
+      id: this.parkingSpace.id,
+      title: this.parkingSpace.title,
+      desc: this.parkingSpace.description,
+      price: this.parkingSpace.price
+    };
+    // navigation
     this.navController.navigateBack('/parking-spaces/tabs/find');
-    localStorage.setItem('spot_reserved', JSON.stringify(true));
+    // save to LocalStorage
+    localStorage.setItem('spot_reserved', JSON.stringify(ps));
   }
 
 }
