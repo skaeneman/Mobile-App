@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SpaceInfoPage } from './space-info.page';
+import { MakeReservationComponent } from '../../../reservations/make-reservation/make-reservation.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [SpaceInfoPage]
+  declarations: [SpaceInfoPage, MakeReservationComponent],
+  entryComponents: [MakeReservationComponent]
 })
 export class SpaceInfoPageModule {}

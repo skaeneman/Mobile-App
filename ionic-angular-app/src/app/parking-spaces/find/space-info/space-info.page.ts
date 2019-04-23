@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ParkingSpacesService } from '../../parking-spaces.service';
 import { ParkingSpaces } from '../../parking-spaces.model';
+import { MakeReservationComponent } from '../../../reservations/make-reservation/make-reservation.component';
 
 @Component({
   selector: 'app-space-info',
@@ -15,7 +16,8 @@ export class SpaceInfoPage implements OnInit {
   constructor(
     private navController: NavController,
     private activatedRoute: ActivatedRoute,
-    private parkingSpacesService: ParkingSpacesService
+    private parkingSpacesService: ParkingSpacesService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -40,8 +42,15 @@ export class SpaceInfoPage implements OnInit {
       desc: this.parkingSpace.description,
       price: this.parkingSpace.price
     };
-    // navigation
-    this.navController.navigateBack('/parking-spaces/tabs/find');
+    // open a modal
+    this.modalController
+      .create({component: MakeReservationComponent, animated: true})
+      .then(modalElement => {
+        modalElement.present();
+      });
+    // this.navController.navigateBack('/parking-spaces/tabs/find');
+    
+
     // save to LocalStorage
     localStorage.setItem('spot_reserved', JSON.stringify(ps));
   }
