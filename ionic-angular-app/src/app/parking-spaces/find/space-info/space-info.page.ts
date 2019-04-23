@@ -44,9 +44,19 @@ export class SpaceInfoPage implements OnInit {
     };
     // open a modal
     this.modalController
-      .create({component: MakeReservationComponent, animated: true})
+      .create({
+        component: MakeReservationComponent,
+        componentProps: { chosenParkingSpot: this.parkingSpace },
+        animated: true
+      })
       .then(modalElement => {
         modalElement.present();
+        return modalElement.onDidDismiss();
+      })
+      .then(result => {
+        if (result.role === 'confirmModal') {
+          console.log('parking space reserved');
+        }
       });
     // this.navController.navigateBack('/parking-spaces/tabs/find');
     

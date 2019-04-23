@@ -1,7 +1,16 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Reserve Parking Spot</ion-title>
+    <ion-title>{{ chosenParkingSpot.title }}</ion-title>
+    <ion-buttons>
+      <ion-button (click)="onCancel()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content><h2>Reserve Parking Spot</h2></ion-content>
+<ion-content padding>
+  <h2 text-center>Reserve Parking Spot</h2>
+  <p>{{ chosenParkingSpot.description }}</p>
+  <ion-button color="primary" (click)="onReserveSpot()">Get Parking Space</ion-button>
+</ion-content>
