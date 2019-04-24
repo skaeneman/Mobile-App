@@ -7,13 +7,13 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./new-bid.page.scss'],
 })
 export class NewBidPage implements OnInit {
-newForm: FormGroup;
+form: FormGroup;
 
   constructor() { }
 
   ngOnInit() {
     // create a new form on page load
-    this.newForm = new FormGroup({
+    this.form = new FormGroup({
       title: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
@@ -38,7 +38,7 @@ newForm: FormGroup;
   }
 
 onCreateBid() {
-  console.log(this.newForm);
+  console.log(this.form);
 }
 
 }
