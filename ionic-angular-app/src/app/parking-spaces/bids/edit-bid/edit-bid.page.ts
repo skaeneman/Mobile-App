@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ParkingSpacesService } from '../../parking-spaces.service';
 import { NavController } from '@ionic/angular';
 import { ParkingSpaces } from '../../parking-spaces.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { ParkingSpaces } from '../../parking-spaces.model';
 })
 export class EditBidPage implements OnInit {
   parkingSpace: ParkingSpaces;
+  editForm: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,6 +30,19 @@ export class EditBidPage implements OnInit {
       }
       // finds parking spot by id
       this.parkingSpace = this.parkingSpacesService.findParkingSpace(paramMap.get('parkingSpaceId'));
+
+      // initialize edit form
+      this.editForm = new FormGroup({
+        title: new FormControl(this.parkingSpace.title, {
+          updateOn: 'blur',
+          validators: [Validators.required]
+        }),
+        description: new FormControl(this.parkingSpace.description, {
+          updateOn: 'blur',
+          validators: [Validators.required, Validators.maxLength(100)]
+        })
+      });
+
     });
   }
 
