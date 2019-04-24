@@ -38,7 +38,7 @@ newForm: FormGroup;
   }
 
 onCreateBid() {
-  console.log('bid created...');
+  console.log(this.newForm);
 }
 
 }
