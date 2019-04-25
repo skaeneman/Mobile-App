@@ -11,6 +11,41 @@
 
 <ion-content padding>
   <h2 text-center>Reserve Parking Spot</h2>
-  <p>{{ chosenParkingSpot.description }}</p>
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input type="text" ngModel name="f-name" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text" ngModel name="l-name" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>   
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Number of days</ion-label>
+            <ion-select type="text" [ngModel]="'1'" name="num-days" required>
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+          </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>         
+    </ion-grid>
+  </form>
   <ion-button color="primary" (click)="onReserveSpot()">Get Parking Space</ion-button>
 </ion-content>

@@ -36,16 +36,16 @@ export class ParkingSpacesService {
       23.95)
 ];
 
+  constructor() { }
+
   // getter function for parking spaces
   get parkingSpaces() {
     return this.pSpaces;
   }
 
-  // find a parking spot by id
-  findParkingSpace(pId: string) {
-    return this.pSpaces.find(
-      space => space.id === pId);
+  // lookup parking space
+  findParkingSpace(id: string) {
+    return { ...this.pSpaces.find(space => space.id === id) };
   }
-
-  constructor() { }
+  
 }

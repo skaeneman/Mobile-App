@@ -13,7 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class EditBidPage implements OnInit {
   parkingSpace: ParkingSpaces;
-  editForm: FormGroup;
+  form: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -31,8 +31,10 @@ export class EditBidPage implements OnInit {
       // finds parking spot by id
       this.parkingSpace = this.parkingSpacesService.findParkingSpace(paramMap.get('parkingSpaceId'));
 
+      console.log('parking...', this.parkingSpace);
+
       // initialize edit form
-      this.editForm = new FormGroup({
+      this.form = new FormGroup({
         title: new FormControl(this.parkingSpace.title, {
           updateOn: 'blur',
           validators: [Validators.required]
