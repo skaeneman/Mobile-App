@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-authentication',
@@ -6,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authentication.page.scss'],
 })
 export class AuthenticationPage implements OnInit {
-  userAuthenticated = false;  // set user to not be authenticated
   private _userId = 'userId1';
 
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -19,18 +19,14 @@ export class AuthenticationPage implements OnInit {
     return this._userId;
   }
 
-  // log a user in, save to localStorage
-  signIn() {
-    let isAuthenticated = this.userAuthenticated;
-    isAuthenticated = true;
-    localStorage.setItem('authenticated', JSON.stringify(isAuthenticated));
+  // call the signIn function in the authentication service
+  onSignIn() {
+    this.authService.signIn();
   }
 
-  // log a user out, save to localStorage
-  signOut() {
-    let isAuthenticated = this.userAuthenticated;
-    isAuthenticated = false;
-    localStorage.setItem('authenticated', JSON.stringify(isAuthenticated));
+  // call the signOut function in the authentication service
+  onSignOut() {
+    this.authService.signOut();
   }
 
 }

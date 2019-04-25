@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ParkingSpaces } from './parking-spaces.model';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,7 @@ export class ParkingSpacesService {
       new Date())
 ];
 
-  constructor() { }
+  constructor(private auth: AuthenticationService) { }
 
   // getter function for all parking spaces
   get parkingSpaces() {
@@ -58,6 +59,26 @@ export class ParkingSpacesService {
   // lookup one parking space
   findParkingSpace(id: string) {
     return { ...this.pSpaces.find(space => space.id === id) };
+  }
+
+  // create a new parking space
+  addParkingSpace(title: string,
+                  description: string,
+                  url: string,
+                  price: number,
+                  dateFrom: Date,
+                  dateTo: Date) {
+    // generate random id
+    const id = Math.random().toString();
+    // new parking spot
+    const newParkingSpace = new ParkingSpaces(id,
+                                              userId,
+                                              title,
+                                              description,
+                                              url,
+                                              price, 
+                                              dateFrom, 
+                                              dateTo);
   }
   
 }
