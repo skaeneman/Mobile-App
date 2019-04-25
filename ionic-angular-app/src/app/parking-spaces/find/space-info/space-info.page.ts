@@ -42,6 +42,7 @@ export class SpaceInfoPage implements OnInit {
       desc: this.parkingSpace.description,
       price: this.parkingSpace.price
     };
+
     // open a modal
     this.modalController
       .create({
@@ -54,12 +55,12 @@ export class SpaceInfoPage implements OnInit {
         return modalElement.onDidDismiss();
       })
       .then(result => {
+        console.log(result.data, result.role);
         if (result.role === 'confirmModal') {
           console.log('parking space reserved');
         }
       });
     // this.navController.navigateBack('/parking-spaces/tabs/find');
-    
 
     // save to LocalStorage
     localStorage.setItem('spot_reserved', JSON.stringify(ps));

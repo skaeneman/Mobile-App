@@ -4,6 +4,9 @@ export class ParkingSpaces {
         public title: string,
         public description: string,
         public url: string,
-        public price: number) {}
+        public price: number,
+        public dateFrom: Date,
+        public dateTo: Date
+        ){}
 }
 
