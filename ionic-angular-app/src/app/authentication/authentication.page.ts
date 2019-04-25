@@ -7,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthenticationPage implements OnInit {
   userAuthenticated = false;  // set user to not be authenticated
+  private _userId = 'userId1';
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  // getter method for userId
+  get userId() {
+    return this._userId;
   }
 
   // log a user in, save to localStorage
