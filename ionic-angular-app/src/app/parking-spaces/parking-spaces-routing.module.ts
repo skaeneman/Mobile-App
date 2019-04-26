@@ -32,11 +32,6 @@ const routes: Routes = [
                      loadChildren: './bids/new-bid/new-bid.module#NewBidPageModule'
                  },
                  {
-                     // edit bid route
-                     path: 'edit/:parkingSpaceId',
-                     loadChildren: './bids/edit-bid/edit-bid.module#EditBidPageModule'
-                 },
-                 {
                      // space reservations
                      path: ':parkingSpaceId',
                      loadChildren: './bids/space-reservations/space-reservations.module#SpaceReservationsPageModule'
