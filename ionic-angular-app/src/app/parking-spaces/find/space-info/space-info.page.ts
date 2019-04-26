@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ParkingSpacesService } from '../../parking-spaces.service';
 import { ParkingSpaces } from '../../parking-spaces.model';
@@ -10,8 +11,9 @@ import { MakeReservationComponent } from '../../../reservations/make-reservation
   templateUrl: './space-info.page.html',
   styleUrls: ['./space-info.page.scss'],
 })
-export class SpaceInfoPage implements OnInit {
+export class SpaceInfoPage implements OnInit, OnDestroy {
   parkingSpace: ParkingSpaces;
+  private parkingSpacesSubscription: Subscription;
 
   constructor(
     private navController: NavController,
@@ -29,8 +31,17 @@ export class SpaceInfoPage implements OnInit {
         return;
       }
       // finds parking spot by id
-      this.parkingSpace = this.parkingSpacesService.findParkingSpace(paramMap.get('parkingSpaceId'));
+      this.parkingSpacesSubscription =
+        this.parkingSpacesService.findParkingSpace(paramMap.get('parkingSpaceId')).subscribe(spot => {
+        this.parkingSpace = spot;
+      });
     });
+  }
+
+  ngOnDestroy() {
+    if (this.parkingSpacesSubscription) {
+      this.parkingSpacesSubscription.unsubscribe();
+    }
   }
 
   // save parking spot status to LocalStorage

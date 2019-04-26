@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/parking-spaces/tabs/bids"></ion-back-button>
     </ion-buttons>
-    <ion-title>New Bid</ion-title>
+    <ion-title>Add Parking Space</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -55,7 +55,7 @@
       </ion-row>    
       <ion-row>
         <ion-col size-sm="12">
-          <ion-button (click)="onCreateBid()" [disabled]="!form.valid" expand="block">create bid</ion-button>
+          <ion-button (click)="onCreateSpace()" [disabled]="!form.valid" expand="block">create bid</ion-button>
         </ion-col>   
       </ion-row>        
     </ion-grid>

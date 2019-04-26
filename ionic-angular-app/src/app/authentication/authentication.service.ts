@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthenticationService {
   userAuthenticated = false;  // set user to not be authenticated
+  private _userId = 'userId1'; // test userId
 
   constructor() { }
 
@@ -27,6 +28,11 @@ export class AuthenticationService {
   // check if the user is signed in
   get isAuthenticated() {
     return this.userAuthenticated;
+  }
+
+  // getter method for userId
+  get userId() {
+    return this._userId;
   }
 
 }

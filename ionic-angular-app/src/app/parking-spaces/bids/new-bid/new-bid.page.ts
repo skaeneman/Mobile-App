@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ParkingSpacesService } from '../../parking-spaces.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-bid',
@@ -9,7 +11,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class NewBidPage implements OnInit {
 form: FormGroup;
 
-  constructor() { }
+  constructor(
+    private parkingService: ParkingSpacesService,
+    private router: Router) { }
 
   ngOnInit() {
     // create a new form on page load
@@ -37,8 +41,21 @@ form: FormGroup;
     });
   }
 
-onCreateBid() {
-  console.log(this.form);
+// creates a new parking space
+onCreateSpace() {
+  this.parkingService.addParkingSpace(
+    this.form.value.title,
+    this.form.value.description,
+    +this.form.value.price,
+    new Date(this.form.value.from),
+    new Date(this.form.value.to) 
+  )
+  .subscribe(() => {
+    // clear the form and redirect after submission
+    this.form.reset();
+    this.router.navigate(['/']);
+    console.log('new parking space created...');
+  });
 }
 
 }

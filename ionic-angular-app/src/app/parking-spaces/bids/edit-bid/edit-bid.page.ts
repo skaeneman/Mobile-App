@@ -30,6 +30,9 @@ export class EditBidPage implements OnInit {
       }
       // finds parking spot by id
       this.parkingSpace = this.parkingSpacesService.findParkingSpace(paramMap.get('parkingSpaceId'));
+      
+      // TODO: look at 177. 8.42 
+
 
       console.log('parking...', this.parkingSpace);
 

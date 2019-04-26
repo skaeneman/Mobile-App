@@ -7,26 +7,20 @@ import { AuthenticationService } from './authentication.service';
   styleUrls: ['./authentication.page.scss'],
 })
 export class AuthenticationPage implements OnInit {
-  private _userId = 'userId1';
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  // getter method for userId
-  get userId() {
-    return this._userId;
-  }
-
   // call the signIn function in the authentication service
   onSignIn() {
-    this.authService.signIn();
+    this.authenticationService.signIn();
   }
 
   // call the signOut function in the authentication service
   onSignOut() {
-    this.authService.signOut();
+    this.authenticationService.signOut();
   }
 
 }
