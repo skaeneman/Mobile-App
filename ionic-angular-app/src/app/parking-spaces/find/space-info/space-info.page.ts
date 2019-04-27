@@ -73,7 +73,7 @@ export class SpaceInfoPage implements OnInit, OnDestroy {
           console.log('parking space reserved!');
           // get parkingSpotData data
           const parkingData = result.data.parkingSpotData;
-          // console.log('parkingData', parkingData); 
+          // console.log('parkingData', parkingData);
           // create a new reservation
           this.reservationService.addReservation(
             this.parkingSpace.id, this.parkingSpace.title,

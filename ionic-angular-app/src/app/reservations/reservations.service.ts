@@ -53,11 +53,10 @@ addReservation(
     ...this.reservations,
     newReservation
   ];
-
 }
 
-  // // remove a reservation
-  // deleteReservation() {
-  // }
+  // remove a reservation
+  deleteReservation() {
+  }
 
 }
