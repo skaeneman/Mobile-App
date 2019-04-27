@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { ReservationsService } from '../../../reservations/reservations.service';
 import { ActivatedRoute } from '@angular/router';
 import { ParkingSpacesService } from '../../parking-spaces.service';
 import { ParkingSpaces } from '../../parking-spaces.model';
@@ -19,7 +20,8 @@ export class SpaceInfoPage implements OnInit, OnDestroy {
     private navController: NavController,
     private activatedRoute: ActivatedRoute,
     private parkingSpacesService: ParkingSpacesService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private reservationService: ReservationsService
   ) { }
 
   ngOnInit() {
@@ -66,12 +68,21 @@ export class SpaceInfoPage implements OnInit, OnDestroy {
         return modalElement.onDidDismiss();
       })
       .then(result => {
-        console.log(result.data, result.role);
+        // console.log(result.data, result.role);
         if (result.role === 'confirmModal') {
-          console.log('parking space reserved');
+          console.log('parking space reserved!');
+          // get parkingSpotData data
+          const parkingData = result.data.parkingSpotData;
+          // console.log('parkingData', parkingData); 
+          // create a new reservation
+          this.reservationService.addReservation(
+            this.parkingSpace.id, this.parkingSpace.title,
+            this.parkingSpace.url, parkingData.firstName,
+            parkingData.lastName, parkingData.reservedDayCount,
+            parkingData.from, parkingData.to
+          );
         }
       });
-    // this.navController.navigateBack('/parking-spaces/tabs/find');
 
     // save to LocalStorage
     localStorage.setItem('spot_reserved', JSON.stringify(ps));

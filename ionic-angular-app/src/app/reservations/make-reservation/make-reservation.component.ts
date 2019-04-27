@@ -18,12 +18,13 @@ export class MakeReservationComponent implements OnInit {
 
   onReserveSpot() {
     this.modalController.dismiss(
-      { parkingSpotData:{
-      firstName: this.form.value['f-name'],
-      lastName: this.form.value['l-name'],
-      reservedDayCount: this.form.value['num-days'],
-      to: this.form.value['to'],
-      from: this.form.value['from'],
+      {
+        parkingSpotData:{
+        firstName: this.form.value['f-name'],
+        lastName: this.form.value['l-name'],
+        reservedDayCount: +this.form.value['num-days'],
+        to: new Date(this.form.value['to']),
+        from: new Date(this.form.value['from']),
       }
     }, 'confirmModal');
   }
