@@ -1,0 +1,13 @@
+.googleMap {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 140ms ease-in;
+    background-color: transparent;
+  }
+  
+  .googleMap.visible {
+    opacity: 1;
+  }
+  

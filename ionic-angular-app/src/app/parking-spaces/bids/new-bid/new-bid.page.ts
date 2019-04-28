@@ -37,7 +37,8 @@ form: FormGroup;
       to: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
-      })
+      }),
+      locationAddress: new FormControl(null, { validators: [Validators.required] })
     });
   }
 
