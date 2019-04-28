@@ -1,4 +1,23 @@
-<div>
+<!-- <div>
   <ion-button color="danger" expand="block" (click)="onSelectLocation()">Select Location
+  </ion-button>
+</div> -->
+
+
+<div class="picker">
+  <ion-img
+    role="button"
+    class="location-image"
+    (click)="onSelectLocation()"
+    [src]="selectedMapImage"
+    *ngIf="selectedMapImage"
+  ></ion-img>
+  <ion-button
+    color="primary"
+    (click)="onSelectLocation()"
+    *ngIf="!selectedMapImage"
+  >
+    <ion-icon name="map" slot="start"></ion-icon>
+    <ion-label>Select Location</ion-label>
   </ion-button>
 </div>

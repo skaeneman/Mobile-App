@@ -1,3 +1,5 @@
+import { ParkingSpaceLocation } from './parking-spaces-location.model';
+
 export class ParkingSpaces {
     constructor(
         public id: string,
@@ -7,7 +9,8 @@ export class ParkingSpaces {
         public url: string,
         public price: number,
         public dateFrom: Date,
-        public dateTo: Date
+        public dateTo: Date,
+        public location: ParkingSpaceLocation
         ){}
 }
 

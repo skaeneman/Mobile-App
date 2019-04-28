@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ParkingSpacesService } from '../../parking-spaces.service';
 import { Router } from '@angular/router';
+import { ParkingSpaceLocation } from '../../parking-spaces-location.model';
 
 @Component({
   selector: 'app-new-bid',
@@ -49,7 +50,8 @@ onCreateSpace() {
     this.form.value.description,
     +this.form.value.price,
     new Date(this.form.value.from),
-    new Date(this.form.value.to) 
+    new Date(this.form.value.to),
+    this.form.value.locationAddress
   )
   .subscribe(() => {
     // clear the form and redirect after submission
@@ -57,6 +59,12 @@ onCreateSpace() {
     this.router.navigate(['/']);
     console.log('new parking space created...');
   });
+}
+
+// the address chosen for the map
+onAddressSelect(location: ParkingSpaceLocation) {
+  // update the form object to save the location
+  this.form.patchValue({ locationAddress: location });
 }
 
 }

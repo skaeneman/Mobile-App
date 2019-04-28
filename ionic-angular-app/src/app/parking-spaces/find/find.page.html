@@ -12,7 +12,7 @@
     <ion-row>
       <ion-col size='12' size-sm='10' offset-sm='1'>
         <ion-list>
-          <ion-item *ngFor="let space of spaces.slice(1)" (click)='getSpaceInfo(space)'  detail>
+          <ion-item *ngFor="let space of spaces" (click)='getSpaceInfo(space)'  detail>
             <ion-thumbnail slot="start">
               <ion-img [src]="space.url"></ion-img>
             </ion-thumbnail>

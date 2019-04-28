@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { MapComponent } from '../map/map.component';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { ParkingSpaceLocation } from '../../parking-spaces/parking-spaces-location.model';
 
 @Component({
   selector: 'app-location',
@@ -11,6 +13,8 @@ import { map } from 'rxjs/operators';
 })
 export class LocationComponent implements OnInit {
   googleMapsKey = 'AIzaSyD61Un3DswF8Pu1c1pCXZ3LAl045sLXGQs';
+  @Output() addressSelect = new EventEmitter<ParkingSpaceLocation>();
+  selectedMapImage: string;
 
   constructor(private modalController: ModalController,
               private http: HttpClient) { }
@@ -25,17 +29,41 @@ export class LocationComponent implements OnInit {
           if (!mapModalData.data) {
             return;
           }
+          const selectedLocation: ParkingSpaceLocation = {
+            address: null,
+            mapImageUrl: null,
+            lat: mapModalData.data.lat,
+            lng: mapModalData.data.lng
+          };
           // retrieve map address
           this.getMapAddress(mapModalData.data.lat, mapModalData.data.lng)
-            .subscribe(address => {
-              console.log(address);
-            }
-          );
+          .pipe( switchMap(address => {
+            // get map image
+            selectedLocation.address = address;
+              return of(this.getGoogleMapStaticImage(selectedLocation.lat, selectedLocation.lng, 15));
+            })
+          )
+          .subscribe(mapImageUrl => {
+            selectedLocation.mapImageUrl = mapImageUrl;
+            this.selectedMapImage = mapImageUrl;
+            this.addressSelect.emit(selectedLocation);
+          });
+
         });
       modalElement.present();  // show the modal
     });
   }
 
+  // get a static image for the map location selected by the user 
+  private getGoogleMapStaticImage(zoomIn: number, lat: number, long: number) {
+    // console.log('inside getGoogleMapStaticImage...', zoomIn, lat, long);
+    return `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${long}&zoom=${zoomIn}&size=550x350&maptype=roadmap
+    &markers=color:red%7Clabel:Parking%20Space%7C${lat},${long}
+    &key=${this.googleMapsKey}`;
+  }
+
+
+  // use geolocation API to get an address
   private getMapAddress(lat: number, lng: number) {
     return this.http
       .get<any>(

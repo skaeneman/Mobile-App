@@ -3,6 +3,7 @@ import { ParkingSpaces } from './parking-spaces.model';
 import { AuthenticationService } from '../authentication/authentication.service';
 import { BehaviorSubject } from 'rxjs';
 import { take, map, tap, delay } from 'rxjs/operators';
+import { ParkingSpaceLocation } from './parking-spaces-location.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,13 +16,14 @@ export class ParkingSpacesService {
         // uses constructor
         new ParkingSpaces(
           '001',
-          'userId1',
+          'userId2',
           'Southie',
           'Close to M Street Beach',
           'http://cbsboston.files.wordpress.com/2013/07/beach.jpg?w=620&h=349&crop=1',
           35.95,
           new Date(),
-          new Date()),
+          new Date(),
+          location),
         new ParkingSpaces(
           '002',
           'userId2',
@@ -30,7 +32,8 @@ export class ParkingSpacesService {
           'https://c2.staticflickr.com/8/7063/6913528665_3027294c46_z.jpg',
           25.99,
           new Date(),
-          new Date()),
+          new Date(),
+          location),
         new ParkingSpaces(
           '003',
           'userId3',
@@ -39,7 +42,8 @@ export class ParkingSpacesService {
           'http://farm3.staticflickr.com/2773/5796800367_fd0acf39b0_z.jpg',
           34.99,
           new Date(),
-          new Date()),
+          new Date(),
+          location),
         new ParkingSpaces(
           '004',
           'userId4',
@@ -48,7 +52,8 @@ export class ParkingSpacesService {
           'https://s-media-cache-ak0.pinimg.com/736x/73/41/2a/73412abc1a78de99598bb75762c53882--boston-university-charles-river.jpg',
           23.95,
           new Date(),
-          new Date())
+          new Date(),
+          location)
     ]
   );
 
@@ -70,7 +75,7 @@ export class ParkingSpacesService {
 
   // create a new parking space
   addParkingSpace(title: string, description: string, price: number,
-                  dateFrom: Date, dateTo: Date) {
+                  dateFrom: Date, dateTo: Date, location: ParkingSpaceLocation) {
     // generate random id
     const id = Math.random().toString();
     // new parking spot
@@ -81,7 +86,8 @@ export class ParkingSpacesService {
                                               'https://econlife.com/wp-content/uploads/2014/12/open-parking-space.jpg',
                                               price,
                                               dateFrom,
-                                              dateTo
+                                              dateTo,
+                                              location
   );
     // save the new parking space and make sure the list is updated
     return this.pSpaces.pipe(take(1), delay(1000), tap(spaces => {
