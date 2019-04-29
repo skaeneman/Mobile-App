@@ -23,7 +23,12 @@ export class ParkingSpacesService {
           35.95,
           new Date(),
           new Date(),
-          location),
+          {
+            address: null,
+            mapImageUrl: null,
+            lat: 42.350552,
+            lng: -71.105404
+          }),
         new ParkingSpaces(
           '002',
           'userId2',
@@ -33,7 +38,12 @@ export class ParkingSpacesService {
           25.99,
           new Date(),
           new Date(),
-          location),
+          {
+            address: null,
+            mapImageUrl: null,
+            lat: 42.350552,
+            lng: -71.105404
+          }),
         new ParkingSpaces(
           '003',
           'userId3',
@@ -43,7 +53,12 @@ export class ParkingSpacesService {
           34.99,
           new Date(),
           new Date(),
-          location),
+          {
+            address: null,
+            mapImageUrl: null,
+            lat: 42.350552,
+            lng: -71.105404
+          }),
         new ParkingSpaces(
           '004',
           'userId4',
@@ -53,7 +68,12 @@ export class ParkingSpacesService {
           23.95,
           new Date(),
           new Date(),
-          location)
+          {
+            address: null,
+            mapImageUrl: null,
+            lat: 42.350552,
+            lng: -71.105404
+          })
     ]
   );
 
