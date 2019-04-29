@@ -17,14 +17,14 @@ export class ParkingSpacesService {
         new ParkingSpaces(
           '001',
           'userId2',
-          'Southie',
-          'Close to M Street Beach',
+          'Southie Parking',
+          'Close to the beach.',
           'http://cbsboston.files.wordpress.com/2013/07/beach.jpg?w=620&h=349&crop=1',
           35.95,
           new Date(),
           new Date(),
           {
-            address: null,
+            address: '117 M Street, Boston, MA, 02127',
             mapImageUrl: null,
             lat: 42.350552,
             lng: -71.105404
@@ -32,14 +32,14 @@ export class ParkingSpacesService {
         new ParkingSpaces(
           '002',
           'userId2',
-          'North End',
+          'North End Parking',
           'By the Old North Church',
           'https://c2.staticflickr.com/8/7063/6913528665_3027294c46_z.jpg',
           25.99,
           new Date(),
           new Date(),
           {
-            address: null,
+            address: '157 Richmond Street, Boston, MA, 02113',
             mapImageUrl: null,
             lat: 42.350552,
             lng: -71.105404
@@ -47,14 +47,14 @@ export class ParkingSpacesService {
         new ParkingSpaces(
           '003',
           'userId3',
-          'Brookline',
+          'Brookline Parking',
           'In the heart of Coolidge Corner',
           'http://farm3.staticflickr.com/2773/5796800367_fd0acf39b0_z.jpg',
           34.99,
           new Date(),
           new Date(),
           {
-            address: null,
+            address: '1317 Beacon St, Brookline, MA 02446',
             mapImageUrl: null,
             lat: 42.350552,
             lng: -71.105404
@@ -62,14 +62,14 @@ export class ParkingSpacesService {
         new ParkingSpaces(
           '004',
           'userId4',
-          'Boston',
+          'Boston University Parking',
           'Walking distance to Boston University',
           'https://s-media-cache-ak0.pinimg.com/736x/73/41/2a/73412abc1a78de99598bb75762c53882--boston-university-charles-river.jpg',
           23.95,
           new Date(),
           new Date(),
           {
-            address: null,
+            address: '1010 Commonwealth Avenue, Boston, MA 02215',
             mapImageUrl: null,
             lat: 42.350552,
             lng: -71.105404

@@ -15,6 +15,7 @@ export class LocationComponent implements OnInit {
   googleMapsKey = 'AIzaSyD61Un3DswF8Pu1c1pCXZ3LAl045sLXGQs';
   @Output() addressSelect = new EventEmitter<ParkingSpaceLocation>();
   selectedMapImage: string;
+  selectedMapAddress: string;
 
   constructor(private modalController: ModalController,
               private http: HttpClient) { }
@@ -53,6 +54,8 @@ export class LocationComponent implements OnInit {
       modalElement.present();  // show the modal
     });
   }
+
+
 
   // get a static image for the map location selected by the user 
   private getGoogleMapStaticImage(zoomIn: number, lat: number, long: number) {

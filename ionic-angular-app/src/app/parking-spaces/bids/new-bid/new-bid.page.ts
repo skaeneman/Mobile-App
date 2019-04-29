@@ -57,7 +57,7 @@ onCreateSpace() {
     // clear the form and redirect after submission
     this.form.reset();
     this.router.navigate(['/']);
-    console.log('new parking space created...');
+    console.log('new parking space created...', this.parkingService);
   });
 }
 
