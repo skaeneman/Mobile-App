@@ -19,7 +19,7 @@ export class ParkingSpacesService {
           'userId2',
           'Southie Parking',
           'Close to the beach.',
-          'http://cbsboston.files.wordpress.com/2013/07/beach.jpg?w=620&h=349&crop=1',
+          'assets/images/southie.jpeg',
           35.95,
           new Date(),
           new Date(),
@@ -34,7 +34,7 @@ export class ParkingSpacesService {
           'userId2',
           'North End Parking',
           'By the Old North Church',
-          'https://c2.staticflickr.com/8/7063/6913528665_3027294c46_z.jpg',
+          'assets/images/northEnd.jpeg',
           25.99,
           new Date(),
           new Date(),
@@ -49,7 +49,7 @@ export class ParkingSpacesService {
           'userId3',
           'Brookline Parking',
           'In the heart of Coolidge Corner',
-          'http://farm3.staticflickr.com/2773/5796800367_fd0acf39b0_z.jpg',
+          'assets/images/brookline.jpeg',
           34.99,
           new Date(),
           new Date(),
@@ -64,7 +64,7 @@ export class ParkingSpacesService {
           'userId4',
           'Boston University Parking',
           'Walking distance to Boston University',
-          'https://s-media-cache-ak0.pinimg.com/736x/73/41/2a/73412abc1a78de99598bb75762c53882--boston-university-charles-river.jpg',
+          'assets/images/BU.jpeg',
           23.95,
           new Date(),
           new Date(),
@@ -81,7 +81,6 @@ export class ParkingSpacesService {
 
   // getter function for all parking spaces
   get parkingSpaces() {
-    console.log('getting parking spaces...');
     return this.pSpaces.asObservable();
   }
 

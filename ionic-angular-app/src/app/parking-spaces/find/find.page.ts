@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./find.page.scss'],
 })
 export class FindPage implements OnInit, OnDestroy {
-  spaces: ParkingSpaces[];
+  parkingSpaces: ParkingSpaces[];
   numOfClicks = 1; // keep track of clicks
   private parkingSpacesSubscription: Subscription;
 
@@ -23,7 +23,7 @@ export class FindPage implements OnInit, OnDestroy {
     // load parking spaces and ensure they update when changed
     this.parkingSpacesSubscription =
       this.parkingSpacesService.parkingSpaces.subscribe(spots => {
-        this.spaces = spots;
+        this.parkingSpaces = spots;
       });
   }
 
