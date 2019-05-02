@@ -11,6 +11,7 @@ import { ParkingSpaceLocation } from '../../parking-spaces-location.model';
 })
 export class NewBidPage implements OnInit {
 form: FormGroup;
+chosenLocation: string;
 
   constructor(
     private parkingService: ParkingSpacesService,
@@ -56,6 +57,7 @@ onCreateSpace() {
   .subscribe(() => {
     // clear the form and redirect after submission
     this.form.reset();
+    this.chosenLocation = '';  // clear location selection
     this.router.navigate(['/']);
     console.log('new parking space created...', this.parkingService);
   });
@@ -63,6 +65,8 @@ onCreateSpace() {
 
 // the address chosen for the map
 onAddressSelect(location: ParkingSpaceLocation) {
+  // get the address to present to the view
+  this.chosenLocation = location.address;
   // update the form object to save the location
   this.form.patchValue({ locationAddress: location });
 }

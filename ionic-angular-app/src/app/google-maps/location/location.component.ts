@@ -16,7 +16,6 @@ export class LocationComponent implements OnInit {
   @Output() addressSelect = new EventEmitter<ParkingSpaceLocation>();
   selectedMapImage: string;
   selectedMapAddress: string;
-  locationChosen: string;
 
   constructor(private modalController: ModalController,
               private http: HttpClient) { }
@@ -42,7 +41,6 @@ export class LocationComponent implements OnInit {
           .pipe( switchMap(address => {
             // get map image
             selectedLocation.address = address;
-            this.locationChosen = address;
               return of(this.getGoogleMapStaticImage(selectedLocation.lat, selectedLocation.lng, 15));
             })
           )
