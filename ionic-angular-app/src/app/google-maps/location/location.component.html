@@ -1,6 +1,14 @@
+
+<div *ngIf="locationChosen">
+  <ion-card>
+    <ion-card-content>
+        <div text-center>{{ locationChosen }}</div>
+    </ion-card-content>
+  </ion-card>
+</div>
+
+
 <div>
   <ion-button color="danger" expand="block" (click)="onSelectLocation()">Select Location
   </ion-button>
 </div>
-
-
